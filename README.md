@@ -5,6 +5,6 @@ Vocollect training homework
 [X]
 
 2. Unit tests
-	1. []
-	2. []
-	3. []
+	1. [X]
+	2. [X]
+	3. [X]
