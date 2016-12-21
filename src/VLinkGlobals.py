@@ -8,3 +8,4 @@ def change_vehicle():
         from voice import globalwords
         globalwords.words['change vehicle'].enabled = False
         task.change_vehicle()
+        

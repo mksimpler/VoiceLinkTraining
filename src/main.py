@@ -41,5 +41,3 @@ def main():
         
     server_startup(ReceivingVoiceAppHTTPServer)
     voicelink_startup()
-    
-    
