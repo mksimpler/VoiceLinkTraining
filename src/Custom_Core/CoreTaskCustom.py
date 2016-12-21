@@ -10,8 +10,9 @@ class CoreTask_Custom(CoreTask):
     
     def __init__(self, taskRunner=None, callingTask=None):
         CoreTask.__init__(self, taskRunner=taskRunner, callingTask=callingTask)
-        if VLinkGlobals.runner is None:
-            VLinkGlobals.runner = taskRunner
+        
+        VLinkGlobals.task_name = self.name
+        VLinkGlobals.runner = taskRunner
     
     def request_configurations(self):
         self.sign_off_allowed = True
