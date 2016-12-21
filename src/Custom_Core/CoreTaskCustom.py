@@ -3,16 +3,12 @@ from core.CoreTask import CoreTask, REQUEST_CONFIG, REQUEST_VEHICLES
 from voice import globalwords as gw
 from vocollect_core.utilities.localization import itext
 from vocollect_core.dialog.functions import prompt_yes_no, prompt_only
-import VLinkGlobals
-
 
 class CoreTask_Custom(CoreTask):
     
     def __init__(self, taskRunner=None, callingTask=None):
         CoreTask.__init__(self, taskRunner=taskRunner, callingTask=callingTask)
-        
-        VLinkGlobals.task_name = self.name
-        VLinkGlobals.runner = taskRunner
+        self.name = 'coreTaskCustom'
     
     def request_configurations(self):
         self.sign_off_allowed = True
