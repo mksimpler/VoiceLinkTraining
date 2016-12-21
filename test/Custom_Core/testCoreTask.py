@@ -7,8 +7,6 @@ from voice import globalwords as gw
 from vocollect_core.task.task_runner import Launch
 import unittest #@UnusedImport
 
-from vocollect_core.utilities import obj_factory
-
 class testCoreTaskCustom(testCoreTask.testCoreTask):
     
     def test_request_breaks(self):
@@ -96,4 +94,3 @@ class testCoreTaskCustom(testCoreTask.testCoreTask):
         self.assertEquals(self._obj.password, '123')
         self.validate_prompts('Sign off, correct?')
         self.validate_server_requests()
- 
