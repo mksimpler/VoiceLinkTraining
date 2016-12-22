@@ -40,7 +40,9 @@ class testMultiplePickPromptTaskCustom (testPickPrompt.testMultiplePickPromptTas
     def test_pvid_value_blank(self):
         self._obj._pvid = ''
         self._obj.runState(PVID_VERIFICATION)
+        
         self.validate_prompts()
+        self.assertEqual(self._obj.next_state, None)
     
     def test_pvid_value_populated(self):
         self._obj._pvid = '12'
@@ -48,15 +50,19 @@ class testMultiplePickPromptTaskCustom (testPickPrompt.testMultiplePickPromptTas
         self._obj._picks[0]['scannedProdID'] = '18'
         self.post_dialog_responses('18')
         self._obj.runState(PVID_VERIFICATION)
+        
+        self.assertEqual(self._obj.next_state, None)
     
     def test_skip_slot(self):
         self.start_server()
+        #self._obj._region_config_rec['allow_skip_slot'] = True
         
         self._obj._pvid = '12'
         self._obj._picks.append(self.tempPickLut[0])
         self.post_dialog_responses('skip slot', 'yes')
         self._obj.runState(PVID_VERIFICATION)
-        self.assertEqual(self._obj.current_state, PVID_VERIFICATION)
+        
+        self.assertEqual(self._obj.next_state, '')
         
         self.stop_server()
     
