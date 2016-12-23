@@ -1,4 +1,4 @@
-from vocollect_core.utilities import obj_factory
+from vocollect_core.utilities import class_factory
 from core.CoreTask import CoreTask, REQUEST_CONFIG, REQUEST_VEHICLES
 from voice import globalwords as gw
 from vocollect_core.utilities.localization import itext
@@ -39,4 +39,4 @@ class CoreTask_Custom(CoreTask):
         else:
             gw.words['sign off'].enabled = True
 
-obj_factory.set_override(CoreTask, CoreTask_Custom)
+class_factory.set_override(CoreTask, CoreTask_Custom)

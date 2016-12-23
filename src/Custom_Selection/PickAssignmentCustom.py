@@ -1,4 +1,4 @@
-from vocollect_core.utilities import obj_factory
+from vocollect_core.utilities import class_factory, obj_factory
 from selection.PickAssignment import PickAssignmentTask, PICK_ASSIGNMENT_AISLE
 from vocollect_core.utilities.localization import itext
 from vocollect_core.dialog.functions import prompt_ready
@@ -31,4 +31,4 @@ class PickAssignmentTask_Custom(PickAssignmentTask):
                 self._aisle_direction = self._pickList[0]["aisle"]
         
 
-obj_factory.set_override(PickAssignmentTask, PickAssignmentTask_Custom)
+class_factory.set_override(PickAssignmentTask, PickAssignmentTask_Custom)
