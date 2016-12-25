@@ -10,7 +10,7 @@ class PickPromptMultipleTask_Custom(PickPromptMultipleTask):
     
     def initializeStates(self):
         super(PickPromptMultipleTask_Custom, self).initializeStates()
-        self.addState(PVID_VERIFICATION, self.pvid_verifiaction, SLOT_VERIFICATION)
+        self.addState(PVID_VERIFICATION, self.pvid_verification, SLOT_VERIFICATION)
     
     def slot_verification(self):
         '''Multiple Prompts''' 
@@ -25,7 +25,7 @@ class PickPromptMultipleTask_Custom(PickPromptMultipleTask):
         else:
             self._verify_product_slot(result, False)
             
-    def pvid_verifiaction(self):
+    def pvid_verification(self):
         '''
         New custom state for entering PVID
         '''

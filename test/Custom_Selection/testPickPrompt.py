@@ -38,31 +38,37 @@ class testMultiplePickPromptTaskCustom (testPickPrompt.testMultiplePickPromptTas
             self.assertTrue(self._obj.name in self._obj.dynamic_vocab.pick_tasks)
     
     def test_pvid_value_blank(self):
+        self._obj._picks.append(self.tempPickLut[0])
+        
         self._obj._pvid = ''
+        self._obj.next_state = None
         self._obj.runState(PVID_VERIFICATION)
         
+        self.assertEqual(self._obj.next_state, None)
         self.validate_prompts()
-        self.assertEqual(self._obj.next_state, None)
-    
+        self.validate_server_requests()
+        
     def test_pvid_value_populated(self):
-        self._obj._pvid = '12'
         self._obj._picks.append(self.tempPickLut[0])
-        self._obj._picks[0]['scannedProdID'] = '18'
-        self.post_dialog_responses('18')
+        
+        self._obj._pvid = '23'
+        self._obj.next_state = None
+        self.post_dialog_responses('23')
         self._obj.runState(PVID_VERIFICATION)
         
         self.assertEqual(self._obj.next_state, None)
+        self.validate_prompts('PVID?')
+        self.validate_server_requests()
     
-    def test_skip_slot(self):
-        self.start_server()
-        #self._obj._region_config_rec['allow_skip_slot'] = True
+    def test_pvid_skip_slot(self):
+        # just test for skip slot is not allowed
         
-        self._obj._pvid = '12'
-        self._obj._picks.append(self.tempPickLut[0])
-        self.post_dialog_responses('skip slot', 'yes')
+        self._setup_put_data()
+        
+        self._obj._pvid = '23'
+        self._obj.next_state = None
+        self.post_dialog_responses('skip slot')
         self._obj.runState(PVID_VERIFICATION)
         
-        self.assertEqual(self._obj.next_state, '')
-        
-        self.stop_server()
-    
+        self.assertEquals(self._obj.next_state, PVID_VERIFICATION)
+        self.validate_prompts('PVID?', 'Last slot, skip slot not allowed')
