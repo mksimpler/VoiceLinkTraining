@@ -38,8 +38,6 @@ class testMultiplePickPromptTaskCustom (testPickPrompt.testMultiplePickPromptTas
             self.assertTrue(self._obj.name in self._obj.dynamic_vocab.pick_tasks)
     
     def test_pvid_value_blank(self):
-        self._obj._picks.append(self.tempPickLut[0])
-        
         self._obj._pvid = ''
         self._obj.next_state = None
         self._obj.runState(PVID_VERIFICATION)
@@ -49,7 +47,7 @@ class testMultiplePickPromptTaskCustom (testPickPrompt.testMultiplePickPromptTas
         self.validate_server_requests()
         
     def test_pvid_value_populated(self):
-        self._obj._picks.append(self.tempPickLut[0])
+        self._setup_put_data()
         
         self._obj._pvid = '23'
         self._obj.next_state = None
@@ -61,8 +59,7 @@ class testMultiplePickPromptTaskCustom (testPickPrompt.testMultiplePickPromptTas
         self.validate_server_requests()
     
     def test_pvid_skip_slot(self):
-        # just test for skip slot is not allowed
-        
+        ''' just test for skip slot is not allowed '''
         self._setup_put_data()
         
         self._obj._pvid = '23'
