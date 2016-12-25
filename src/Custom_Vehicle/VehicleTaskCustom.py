@@ -1,10 +1,11 @@
 from vocollect_core.utilities import class_factory
-from core.VehicleTask import VehicleTask, COMPLETE_SAFETYCHECK,\
-    REQUEST_XMIT_VEHID, REQUEST_VEHICLEID, NEXT_SAFETY_CHECK
+from core.VehicleTask import VehicleTask
+#from core.VehicleTask import VehicleTask, COMPLETE_SAFETYCHECK,\
+#    REQUEST_XMIT_VEHID, REQUEST_VEHICLEID, NEXT_SAFETY_CHECK
 
 from voice import globalwords as gw
-from vocollect_core.dialog.functions import prompt_only
-from vocollect_core.utilities.localization import itext
+#from vocollect_core.dialog.functions import prompt_only
+#from vocollect_core.utilities.localization import itext
 
 class VehicleTask_Custom(VehicleTask):
     
