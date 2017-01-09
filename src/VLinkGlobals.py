@@ -9,8 +9,8 @@ def change_vehicle():
     
     if task is not None:
         from voice import globalwords
-        globalwords.words['change vehicle'].enabled = False
         if prompt_yes_no(itext('global.change.vehicle.confirm')):
             prompt_only(itext('global.change.vehicle'))
+            globalwords.words['change vehicle'].enabled = False
             task.launch(VehicleTask(runner), task.current_state)
         
