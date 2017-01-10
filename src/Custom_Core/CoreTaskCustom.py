@@ -6,9 +6,9 @@ from vocollect_core.dialog.functions import prompt_yes_no, prompt_only
 
 class CoreTask_Custom(CoreTask):
     
-    def __init__(self, taskRunner=None, callingTask=None):
-        CoreTask.__init__(self, taskRunner=taskRunner, callingTask=callingTask)
-        #self.name = "coreTaskCustom"
+#    def __init__(self, taskRunner=None, callingTask=None):
+#        CoreTask.__init__(self, taskRunner=taskRunner, callingTask=callingTask)
+#        self.name = "coreTaskCustom"
     
     def request_configurations(self):
         self.sign_off_allowed = True
